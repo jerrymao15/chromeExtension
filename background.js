@@ -9,38 +9,53 @@ document.addEventListener('DOMContentLoaded', function () {
   // // to open a new tab at specific url
   // chrome.tabs.create({active: true, url: 'http://www.google.com'}, null)
   // })
-  var randomURL = ['https://www.reddit.com/r/programming/', 
-  'https://www.reddit.com/r/coding', 
-  'https://www.reddit.com/r/compsci',
-  'https://www.reddit.com/r/startups', 
-  'https://www.reddit.com/r/javascript',
-  'https://www.reddit.com/r/Database/',
-  'https://www.reddit.com/r/hacking',
-  'https://www.reddit.com/r/cscareerquestions',
-  'https://www.reddit.com/r/dailyprogrammer',
-  'https://www.reddit.com/r/Python/',
-  'https://www.reddit.com/r/machinelearning'
+
+  // chrome.extension.getViews
+  var randomURL = ['/r/programming/', 
+  '/r/coding/', 
+  '/r/compsci/',
+  '/r/startups/', 
+  '/r/javascript/',
+  '/r/Database/',
+  '/r/hacking',
+  '/r/cscareerquestions',
+  '/r/dailyprogrammer',
+  '/r/Python/',
+  '/r/machinelearning'
   ];
+  const redditDomain = 'http://www.reddit.com'
 
   chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    var newURL = randomURL[Math.floor(Math.random() * 11)];
-    if (changeInfo.url === "https://www.reddit.com/" ) {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
+    var newURL = randomURL[Math.floor(Math.random() * randomURL.length)];
+
+    for (let i = 0; i < randomURL.length; i++) {
+      if (changeInfo.url.indexOf(randomURL[i] === -1)) {
+        chrome.tabs.update(null, {active: true, url: newURL}, null);
+      }
+    }    
+
+    if (changeInfo.url.indexOf("www.reddit.com/") !== -1) {
+      // for (let i = 0; i < randomURL.length; i++) {
+      //   if (changeInfo.url.indexOf(randomURL[i] === -1)) {
+      //     chrome.tabs.update(null, {active: true, url: newURL}, null);
+      //   }
+      // }    
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
     } else if (changeInfo.url === "https://www.facebook.com/") {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
     } else if (changeInfo.url === "https://www.instagram.com/") {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
     } else if (changeInfo.url === "https://www.imgur.com/") {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
     } else if (changeInfo.url === "https://twitter.com/") {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
     } else if (changeInfo.url === "https://www.twitch.tv/") {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
     } else if (changeInfo.url === "https://www.youtube.com/") {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
     } else if (changeInfo.url === "http://slickdeals.net/") {
-      chrome.tabs.update(null, {active: true, url: newURL}, null);
-    }
+      chrome.tabs.update(null, {active: true, url: redditDomain + newURL}, null);
+    }  
   }); 
 
 })
