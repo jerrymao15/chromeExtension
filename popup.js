@@ -1,23 +1,38 @@
-// const allowedSubreddits = ['www.reddit.com/r/programming', 'www.reddit.com/r/programming', 'www.reddit.com/r/programming', 'www.reddit.com/r/programming'];
 
+document.addEventListener('DOMContentLoaded', function () {
 
-// // chrome.webRequest.onBeforeRequest.addListener(function(e) {
-// //   console.log(e.url)
-// //   for (let i = 0; i < allowedSubreddits.length; i++) {
-// //     if (!(e.url.indexOf(allowedSubreddits[i]))) {
-// //       let randomSubreddit = Math.floor(Math.random()*4);
-// //       return {redirectUrl: allowedSubreddits[randomSubreddit]};
-// //     }
-// //   }
-  
-// // }, 
-// //   {urls: ['*://www.reddit.com/*', '*://reddit.com/*']}, 
-// //   ['blocking'])
+  var switching = document.getElementById('myonoffswitch');
+  var arrayOfChallenges = [
+  'Thank someone for something good that they did in your life', 
+  'Write your full name using the hand you don\'t usually use.',
+  'Listen to a TED Talk', 
+  'Write a story 2 paragraphs long involving a cave, recursion, and Hello Kitty.',
+  'Pick a topic you\'re passionate about. Write a speech and record yourself reading it.',
+  'Buy and read a newspaper at a cafe',
+  'Get active! Balance a book on your head for 6 seconds. Too easy? Walk outside with it.',
+  'Travel to a place beginning with the letter p. Take a selfie nearby.',
+  'Be lectured. Learn a topic from Khan Academy. Then teach it to someone else.',
+  'Bring a pen and paper, visit the nearest bar, and draw the scene.',
+  'Find a new animal species outdoors. Look it up on wikipedia.', 
+  'Strike up a conversation the next time you\'re taking public transportation.',
+  'Find something that makes you smile. Photograph it.',
+  'Film a 4-minute movie on your phone about Justin Bieber.'
+  ]
 
-// chrome.tabs.onUpdated.addListener(function(e) {
-//   for (let i = 0, i < allowedSubreddits.length; i++) {
-//     if (e.url.includes(allowedSubreddits[u]) && e.url.includes('reddit.com')) {
-//         chrome.tabs.update(null, {active:true, url: allowedSubreddits[0]}, null)
-//     }
-//   }
-// })
+  switching.addEventListener('click', function() {
+    // document.getElementsByTagName('BODY').style.height = 500px;
+    // to open a new tab at specific url
+      // chrome.tabs.create({active: true, url: 'http://www.google.com'}, function() {
+      // })
+
+    // if button is switched back to 'no', nothing happens
+    if (!switching.checked) {
+      document.getElementById('dailyChallenge').hide() = '';
+    }
+    // adding a daily challenge to the tooltip
+    var newChallenge = arrayOfChallenges[Math.floor(Math.random() * 14)];
+    document.getElementById('dailyChallenge').innerHTML = newChallenge;
+
+  })
+
+});
