@@ -1,19 +1,23 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // var redditBlock = document.getElementById('blockButton')
+// const allowedSubreddits = ['www.reddit.com/r/programming', 'www.reddit.com/r/programming', 'www.reddit.com/r/programming', 'www.reddit.com/r/programming'];
 
-  // // on click
-  // redditBlock.addEventListener('click', function() {
 
-  //   // to open a new tab at specific url
-  //   chrome.tabs.create({active: true, url: 'http://www.google.com'}, null)
+// // chrome.webRequest.onBeforeRequest.addListener(function(e) {
+// //   console.log(e.url)
+// //   for (let i = 0; i < allowedSubreddits.length; i++) {
+// //     if (!(e.url.indexOf(allowedSubreddits[i]))) {
+// //       let randomSubreddit = Math.floor(Math.random()*4);
+// //       return {redirectUrl: allowedSubreddits[randomSubreddit]};
+// //     }
+// //   }
+  
+// // }, 
+// //   {urls: ['*://www.reddit.com/*', '*://reddit.com/*']}, 
+// //   ['blocking'])
 
-    chrome.webRequest.onBeforeRequest.addListener(function(e) {
-      console.log(e.url);
-      console.log(urlContains(e.url(), 'www.reddit.com'))
-      console.log(urlContains(e.url,'www.reddit.com/r/programming' ))
-      console.log(queryContains(e.url(), 'www.reddit.com'))
-      // if (hasHostSuffix(e.url)) {
-      //   let randomSubreddit = Math.floor(Math.random()*4);
-      //   return {redirectUrl: allowedSubreddits[randomSubreddit]}
-    }, {urls: ['*://www.reddit.com/*']}, ['blocking'])
-})
+// chrome.tabs.onUpdated.addListener(function(e) {
+//   for (let i = 0, i < allowedSubreddits.length; i++) {
+//     if (e.url.includes(allowedSubreddits[u]) && e.url.includes('reddit.com')) {
+//         chrome.tabs.update(null, {active:true, url: allowedSubreddits[0]}, null)
+//     }
+//   }
+// })

@@ -27,6 +27,18 @@
     "https://ajax.googleapis.com/",
     "webRequest",
     "tabs",
-    "webRequestBlocking"
-  ]
+    "webRequestBlocking",
+    "*://*.reddit.com/*",
+    "background",
+    "webNavigation"
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  }
+
+  // "content_scripts": [
+
+  // ]
 }
